@@ -19,10 +19,10 @@ using namespace std;
 class Animal {
 	bool isAlive;
 
-protected:
+public:
 
-	virtual void  Sleep();
-	virtual void Eat();
+	virtual void  Sleep() = 0;
+	virtual void Eat() = 0;
 
 	Animal() {
 		isAlive = true;
@@ -69,19 +69,19 @@ protected:
 	}
 };
 
-class WaterAnimal : protected Animal {
+class WaterAnimal : public Animal {
 	bool isAlive;
-protected :
+public :
 
 	WaterAnimal() {
 		isAlive = true;
 	}
 
-	virtual void Sleep() {
+	 void Sleep() override{
 		cout << "Water Animal can sleep ;" << endl;
 	}
 
-	virtual void Eat() {
+	 void Eat() override {
 		cout << "Water Animal can eat ;" << endl;
 	}
 
@@ -127,7 +127,7 @@ protected :
 };
 
 
-class Fish : protected WaterAnimal {
+class Fish : public WaterAnimal {
 	bool isAlive;
 
 public :
@@ -136,11 +136,11 @@ public :
 		isAlive = true;
 	}
 
-	virtual void Sleep() {
+	 void Sleep() override {
 		cout << "Fish can sleep ;" << endl;
 	}
 
-	virtual void Eat() {
+	 void Eat() override {
 		cout << "Fish can eat ;" << endl;
 	}
 
@@ -185,18 +185,18 @@ public :
 	}
 };
 
-class Fugu : protected WaterAnimal {
+class Fugu : public WaterAnimal {
 	bool isAlive;
 public :
 
 	Fugu() {
 		isAlive = true;
 	}
-	virtual void Sleep() {
+	 void Sleep() override {
 		cout << "Fugu can sleep ;" << endl;
 	}
 
-	virtual void Eat() {
+	 void Eat() override {
 		cout << "Fugu can eat ;" << endl;
 	}
 
@@ -242,18 +242,18 @@ public :
 };
 
 
-class EarthAnimal : protected Animal{
+class EarthAnimal : public Animal{
 	bool isAlive;
 protected :
 
 	EarthAnimal() {
 		isAlive = true;
 	}
-	virtual void Sleep() {
+	 void Sleep() override {
 		cout << "Earth Animal can sleep ;" << endl;
 	}
 
-	virtual void Eat() {
+	 void Eat() override {
 		cout << "Earth Animal can eat ;" << endl;
 	}
 	void writeOutFile(EarthAnimal& a) {
@@ -297,7 +297,7 @@ protected :
 	}
 };
 
-class Rabbit : protected EarthAnimal {
+class Rabbit : public EarthAnimal {
 	bool isAlive;
 public :
 
@@ -305,11 +305,11 @@ public :
 		isAlive = true;
 	}
 
-	virtual void Sleep() {
+	 void Sleep() override{
 		cout << "Rabbit can sleep ;" << endl;
 	}
 
-	virtual void Eat() {
+	 void Eat() override {
 		cout << "Rabbit can eat ;" << endl;
 	}
 
@@ -354,7 +354,7 @@ public :
 	}
 };
 
-class Pig : protected EarthAnimal {
+class Pig : public EarthAnimal {
 
 	bool isAlive;
 public:
@@ -362,11 +362,11 @@ public:
 		isAlive = true;
 	}
 
-	virtual void Sleep() {
+	 void Sleep() override {
 		cout << "Pig can sleep ;" << endl;
 	}
 
-	virtual void Eat() {
+	 void Eat() override {
 		cout << "Pig can eat ;" << endl;
 	}
 
@@ -413,6 +413,8 @@ public:
 
 int main()
 {
+
+	
 	Fish fish;
 	Fugu fugu;
 	Rabbit rabbit;
